@@ -13,6 +13,11 @@ app.use(bodyParser.json());
 // Serve static files (your HTML/CSS/JS in public folder)
 app.use(express.static(path.join(__dirname, "public")));
 
+//Serve index.html at the root"/"
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // Handle form submission
 app.post("/send", async (req, res) => {
   const { fullName, email, phone, date, service, message } = req.body;
