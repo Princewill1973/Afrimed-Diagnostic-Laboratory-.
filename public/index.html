@@ -102,6 +102,10 @@
     "sameAs":["https://facebook.com/geoffreyuzonosnr","https://instagram.com/yourhandle"]
   }
   </script>
+  <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+  
 </head>
 <body>
   <header>
@@ -239,7 +243,7 @@
         </div>
         <div class="card">
           <h3>Accreditations & Compliance</h3>
-          <p class="muted">MSLCN Registered • ISO 15189‑aligned processes • Data privacy best practices</p>
+          <p class="muted">ALMSN Registered • ISO 15189‑aligned processes • Data privacy best practices</p>
           <h3 style="margin-top:1rem">Opening Hours</h3>
           <p>Mon–Sat: 7:00 AM – 6:00 PM<br>Sun & Public Holidays: On Call</p>
         </div>
@@ -248,6 +252,16 @@
 
     <!-- BOOKING FORM -->
     <section id="booking">
+      <form action="/send" method="POST">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <input type="text" name="phone" placeholder="Phone Number" required>
+  <textarea name="message" placeholder="Your Message / Booking Details" required></textarea>
+  <button type="submit">Book Now</button>
+      </form>
+      <!--✅ This is where succes/error message will display-->
+      <p id="formMessage" style="color: green; font-weight: bold; margin-top: 10px;"></p>
+      
       <div class="container">
         <h2 class="section-title">Book a Test</h2>
         <p class="muted">Fill the form and our team will confirm your appointment. For urgent cases, call <strong>+234 000 000 0000</strong>.</p>
@@ -296,9 +310,9 @@
           </form>
           <div class="card">
             <h3>Contact & Location</h3>
-            <p><strong>Address:</strong> 123 Health Ave, Your City, State</p>
-            <p><strong>Phone:</strong> +234 000 000 0000</p>
-            <p><strong>Email:</strong> hello@medlab.example</p>
+            <p><strong>Address:</strong>210 Abak road,Uyo,Akwa Ibom State</p>
+            <p><strong>Phone:</strong> +234 803 735 0717</p>
+            <p><strong>Email:</strong>geoffreyuzono@gmail.com</p>
             <div style="border-radius:12px;overflow:hidden;border:1px solid #e2e8f0">
               <!-- Replace the q= with your address for an embedded map -->
               <iframe title="Map" src="https://www.google.com/maps?q=lagos%20nigeria&output=embed" width="100%" height="220" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -312,8 +326,8 @@
   <footer>
     <div class="container fgrid">
       <div>
-        <div class="logo" style="color:#e2e8f0"><div class="logo-mark" aria-hidden>ML</div><span>MedLab Services</span></div>
-        <p class="muted">© <span id="y"></span> MedLab Services. All rights reserved.</p>
+        <div class="logo" style="color:#e2e8f0"><div class="logo-mark" aria-hidden>ADL</div><span>Afrimed Diagnostic Services</span></div>
+        <p class="muted">© <span id="y"></span> Afrimed Diagnostic Services. All rights reserved.</p>
       </div>
       <div>
         <strong>Quick Links</strong>
@@ -333,8 +347,35 @@
         </p>
       </div>
     </div>
+  <p>&copy; <span id="y"></span> Afrimed Diagnostic Laboratory. All rights reserved.</p>
   </footer>
 
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <!-- ✅ Form submission script -->
+  <script>
+    const form = document.getElementById("bookingForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const response = await fetch("/send", {
+        method: "POST",
+        body: new URLSearchParams(formData),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      });
+
+      if (response.ok) {
+        formMessage.textContent = "✅ Booking sent successfully! We will contact you soon.";
+        formMessage.style.color = "green";
+        form.reset();
+      } else {
+        formMessage.textContent = "❌ Error sending booking. Please try again.";
+        formMessage.style.color = "red";
+      }
+    });
+  </script>
+
 </body>
-  </html>
+</html>
