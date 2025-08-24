@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // Serve static files (your HTML/CSS/JS in public folder)
 app.use(express.static(path.join(__dirname, "public")));
 
-//Serve index.html at the root"/"
+// Serve index.html at the root "/"
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
@@ -57,3 +57,4 @@ app.post("/send", async (req, res) => {
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
