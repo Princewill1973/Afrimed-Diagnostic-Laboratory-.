@@ -23,7 +23,7 @@ app.post("/send", async (req, res) => {
   const { fullName, email, phone, date, service, message } = req.body;
 
   // Setup email transporter (using Gmail example)
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.MY_EMAIL,      // your Gmail address
@@ -34,7 +34,7 @@ app.post("/send", async (req, res) => {
   // Email content
   const mailOptions = {
     from: `"Afrimed Diagnostic Laboratory Website" <${process.env.MY_EMAIL}>`,
-    to: geoffreyuzono@gmail.com, // where you want to receive bookings
+    to: "geoffreyuzono@gmail.com", // where you want to receive bookings
     subject: "New Booking Request",
     text: `
       Name: ${fullName}
