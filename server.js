@@ -32,9 +32,9 @@ app.post("/send", async (req, res) => {
   });
 
   // Email content
-  let mailOptions = {
+  const mailOptions = {
     from: `"Afrimed Diagnostic Laboratory Website" <${process.env.MY_EMAIL}>`,
-    to: process.env.MY_EMAIL, // where you want to receive bookings
+    to: geoffreyuzono@gmail.com, // where you want to receive bookings
     subject: "New Booking Request",
     text: `
       Name: ${fullName}
