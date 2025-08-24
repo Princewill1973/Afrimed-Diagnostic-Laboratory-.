@@ -252,7 +252,6 @@
 
     <!-- BOOKING FORM -->
     <section id="booking">
-      <form action="/send" method="POST">
   <input type="text" name="name" placeholder="Your Name" required>
   <input type="email" name="email" placeholder="Your Email" required>
   <input type="text" name="phone" placeholder="Phone Number" required>
@@ -264,9 +263,9 @@
       
       <div class="container">
         <h2 class="section-title">Book a Test</h2>
-        <p class="muted">Fill the form and our team will confirm your appointment. For urgent cases, call <strong>+234 000 000 0000</strong>.</p>
+        <p class="muted">Fill the form and our team will confirm your appointment. For urgent cases, call <strong>+234 803 735 0717</strong>.</p>
         <div class="contact">
-          <form onsubmit="validateBooking(event)" action="#" method="post" novalidate>
+          <form id="bookingForm" action="/send" method="POST" onsubmit="validateBooking(event)" novalidate>
             <div class="row">
               <div>
                 <label for="fullName">Full Name</label>
