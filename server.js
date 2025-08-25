@@ -21,7 +21,10 @@ app.get("/", (req, res) => {
 // Handle form submission
 app.post("/send", async (req, res) => {
   const { fullName, email, phone, date, service, message } = req.body;
-
+  
+  console.log("MY_EMAIL =", process.env.MY_EMAIL);
+console.log("MY_PASSWORD exists?", !!process.env.MY_PASSWORD);
+  
   // Setup email transporter (using Gmail example)
   const transporter = nodemailer.createTransport({
     service: "gmail",
